@@ -3,6 +3,8 @@
 - 알고리즘 사이트 (![Baekjoon Online Judge](https://www.acmicpc.net/), ![Programmers](https://programmers.co.kr/learn/challenges?tab=all_challenges))
 - Language : `C++`
 
+---
+
 ### Algorithm
 <details>
 <summary>Dynamic Programming</summary>
@@ -128,6 +130,7 @@ void bfs(int v){
 </div>
 </details>
 
+---
 
 ### Contributors
 | [ji-one](https://github.com/ji-one)     | [Dongwook9696](https://github.com/Dongwook9696) |
