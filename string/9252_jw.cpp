@@ -30,19 +30,15 @@ int main()
     {
         if (d[i][j] == 0)
             break;
-        if (d[i][j] == d[i][j - 1])
+        if (s1[i - 1] == s2[j - 1])
         {
-            --j;
-        }
-        else if (d[i][j] == d[i - 1][j])
-        {
-            --i;
+            v.push_back(s1[i - 1]);
+            --i, --j;
+            
         }
         else
         {
-            v.push_back(s2[j - 1]);
-            --i;
-            --j;
+            d[i - 1][j] > d[i][j - 1] ? --i : --j;
         }
     }
     cout << d[s1.length()][s2.length()] << '\n';

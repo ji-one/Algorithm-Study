@@ -14,6 +14,7 @@ int calcDiff()
     };
     int t1 = 0,
         t2 = 0;
+        
     for (int i = 0; i < n / 2; i++)
     {
         t[team[i]] = 1;

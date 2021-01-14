@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 int a[2001];
-int dp[2001][2001];
+int dp[2001][2001]; // dp[s][e] : s ~ e 까지 팰린드롬 여부
 int main()
 {
     cin.tie(0);

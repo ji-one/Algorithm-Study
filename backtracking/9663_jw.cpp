@@ -5,7 +5,7 @@ int cnt;
 int board[15]; // board[i] = j : i행 j열에 퀸 놓을 수 있음
 bool promising(int row)
 {
-    for (int i = 0; i < row; i++)
+    for (int i = 0; i < row; i++)    
     {
         if (board[i] == board[row] || abs(board[i] - board[row]) == (row - i))
         {

@@ -1,5 +1,4 @@
 // 균형잡힌 세상
-// cin, getline 차이?
 #include <iostream>
 #include <string>
 #include <vector>
@@ -46,9 +45,7 @@ int main()
             }
         }
         if (v.empty() && flag)
-        {
             cout << "yes\n";
-        }
         else
             cout << "no\n";
     }
