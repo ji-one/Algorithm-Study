@@ -1,132 +1,125 @@
+// 20056 ë§ˆë²•ì‚¬ ìƒì–´ì™€ íŒŒì´ì–´ë³¼
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
-int N,M,K;
-int r, c, m, s, d;
-int arr[51][51];
+struct Fireball
+{
+	int x;
+	int y;
+	int mass;
+	int speed;
+	int dir;
+};
 
+int N,M,K;
 int dx[8]= {-1,-1,0,1,1,1,0,-1};
 int dy[8]= {0,1,1,1,0,-1,-1,-1};
 
-int main(){
-	cin >> N >> M >> K;
-	
-	vector<pair<int,int>> v;	// À§Ä¡ 
-	vector<int> v1[N][N];	// Áú·® 
-	vector<int> v2[N][N];	// ¼Ó·Â 
-	vector<int> v3[N][N];	// ¹æÇâ 
-	for(int i=0; i<M; i++){
-		cin>> r >> c >> m >> s >> d;
-		arr[r][c] = 1;
-		v.push_back({r,c});
-		v1[r][c].push_back(m);
-		v2[r][c].push_back(s);
-		v3[r][c].push_back(d);	
-	}
-	
-//	for(int i=1; i<=N; i++){
-//		for(int j=1; j<=N; j++){
-//			cout << arr[i][j] << ' ';
-//		}
-//		cout << '\n';
-//	}
-//	cout << '\n';
+vector<Fireball> fireball;
+vector<Fireball> map[55][55];
 
-	while(K--){
-		int total = 0;
-		for(int i=1; i<=N; i++){
-			for(int j=1; j<=N; j++){
-				total+=arr[i][j];
-			}
-		}
-		cout << "total : "<<total<< '\n';
-		for(int i=0; i<total; i++){
-			int x = v[i].first;
-			int y = v[i].second;
-			int dir = v3[x][y][0];
-			int spe = v2[x][y][0];
-			int mas = v1[x][y][0];
-			arr[x][y]--;
-			v.erase(v.begin());
-			v1[x][y].erase(v1[x][y].begin());
-			v2[x][y].erase(v2[x][y].begin());
-			v3[x][y].erase(v3[x][y].begin());
-			
-			for(int j=0; j<spe; j++){
-				x = (x +dx[dir])%(N);
-				if(x == 0) 
-					x = N;
-				y = (y +dy[dir])%(N);
-				if(y == 0) 
-					y = N;
-			}
-			cout << "AAAAAAAa" <<'\n';
-			
-			arr[x][y]++;
-			v1[x][y].push_back(mas);
-			v2[x][y].push_back(spe);
-			v3[x][y].push_back(dir);
-			cout << "x : " << x << " y : " << y << " d : " << dir << '\n';
-			v.push_back({x,y});
-		}
-		for(int i=1; i<=N; i++){
-			for(int j=1; j<=N; j++){
-				cout << arr[i][j] << ' ';
-			}
-			cout << '\n';
-		}
-		cout << '\n';
-		for(int i=1; i<=N; i++){
-			for(int j=1; j<=N; j++){
-				if(arr[i][j] >=2){
-					
-					int tmp1=0;  // Áú·® ÇÕ 
-					int tmp2=0;  // ¼Ó·Â ÇÕ 
-					int tmp3=0;  // ¹æÇâ ÇÕ 
-					int num= arr[i][j]; // ÇÕÃÄÁø ÆÄÀÌ¾îº¼ °³¼ö 
-					for(int k=0; k<num; k++){
-						tmp1 += v1[i][j][k];
-						tmp2 += v2[i][j][k];
-						tmp3 += v3[i][j][k];
-					}
-					v1[i][j].clear();
-					v2[i][j].clear();
-					v3[i][j].clear();
-					if(tmp1 > 0){
-						if(tmp3%2 == 0){  // ÇÕÀÌ Â¦¼öÀÌ¹Ç·Î ¸ğµÎ È¦¼öÀÌ°Å³ª Â¦¼ö  
-							for(int k=0; k<4; k++){
-								v1[i][j].push_back(tmp1/5);
-								v2[i][j].push_back(tmp1/num);
-								v3[i][j].push_back(k*2);
-							}
-						}
-						else{
-							for(int k=0; k<4; k++){
-								v1[i][j].push_back(tmp1/5);
-								v2[i][j].push_back(tmp1/num);
-								v3[i][j].push_back(k*2+1);
-							}
-						}
-						arr[i][j] = 4;
-						
-					}
-					else{
-						arr[i][j] = 0;
-					}
-				}
-			}
-		}
-	}
-	int sum=0;
+void move(){
+
 	for(int i=1; i<=N; i++){
 		for(int j=1; j<=N; j++){
-			if(arr[i][j] != 0)
-				for(int k=0; k<arr[i][j]; k++){
-					sum += v1[i][j][k];
-				}
+			map[i][j].clear();
 		}
 	}
-	cout << sum;
+
+	for(int i=0; i<fireball.size(); i++){
+		int r = fireball[i].x;
+		int c = fireball[i].y;
+		int m = fireball[i].mass;
+		int s = fireball[i].speed;
+		int d = fireball[i].dir;
+		
+		int Move = s % N;
+        int nx = r + dx[d] * Move;
+        int ny = c + dy[d] * Move;
+        if (nx > N) nx -= N;
+        if (ny > N) ny -= N;
+        if (nx < 1) nx += N;
+        if (ny < 1) ny += N;
+		
+		map[nx][ny].push_back({nx,ny,m,s,d});
+		fireball[i].x = nx;
+		fireball[i].y = ny;
+	}
+	return ;
+}
+
+void sum(){
+
+	vector<Fireball> tmp;
+	for(int i=1; i<=N; i++){
+		for(int j=1; j<=N; j++){
+			if(map[i][j].size() == 0) continue;
+			if(map[i][j].size() == 1){
+				tmp.push_back(map[i][j][0]);
+			}
+			else{
+				int new_m=0, new_s=0;
+				int num = map[i][j].size();
+				bool even = true;
+				bool odd = true;
+				for(int k=0; k<num; k++){
+					new_m += map[i][j][k].mass;
+					new_s += map[i][j][k].speed;
+					if(map[i][j][k].dir % 2 == 0) odd = false;
+					else	even = false;
+				}
+				new_m/=5;
+				new_s/=num;
+				if(new_m == 0) continue;
+				if(even || odd){
+					for(int k=0; k<8; k+=2){
+						tmp.push_back({i,j,new_m,new_s,k});
+					}
+				}
+				else{
+					for(int k=1; k<8; k+=2){
+						tmp.push_back({i,j,new_m,new_s,k});
+					}
+				}
+			}
+		}
+	}
+	
+	fireball = tmp;
+
+	return ;
+}
+int main(){
+	cin >> N >> M >> K;
+	for(int i=0; i<M; i++){
+		int r, c, m, s, d;
+		cin >> r >> c >> m >> s >>d;
+		fireball.push_back({r,c,m,s,d});
+		map[r][c].push_back({r,c,m,s,d});
+	}
+
+	
+	while(K--){
+	// ì´ë™ ì „ íŒŒì´ì–´ë³¼ ì œê±°
+		
+	//1.
+	move();
+		
+	// 2.
+	sum();
+
+	}
+
+	int sum_mass = 0;
+	for(int i=0; i<fireball.size(); i++){
+		sum_mass += fireball[i].mass;
+		
+	}
+	cout << sum_mass;
+	// for(int i=0; i<fireball.size(); i++){
+	// 	cout << fireball[i].mass << ' ';
+	// }
 	return 0;
 }
