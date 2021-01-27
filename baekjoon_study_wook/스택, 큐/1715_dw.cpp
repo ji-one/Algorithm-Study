@@ -1,11 +1,10 @@
-// 1715 Ä«µå Á¤·ÄÇÏ±â
+// 1715 Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 #include <iostream>
 #include <vector>
 #include <queue>
 using namespace std;
 
 int n;
-// ¿ì¼±¼øÀ§ Å¥ ÀÛÀº ¼öºÎÅÍ Á¤·Ä 
 priority_queue<int, vector<int>,greater<int>> pq;
 int main(){
 	cin >> n;

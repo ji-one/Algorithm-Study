@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 using namespace std;
 
 int t,n;
@@ -34,9 +35,8 @@ int main(){
 //			cout << '\n';
 //		}
 		
-		int ans1 = max(dp[0][n-2], dp[1][n-2]);
 		int ans2 = max(dp[0][n-1], dp[1][n-1]);
-		cout << max(ans1, ans2) <<'\n';
+		cout <<  ans2 <<'\n';
 	}
 	return 0;
 }
