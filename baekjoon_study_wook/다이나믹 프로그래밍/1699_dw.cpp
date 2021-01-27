@@ -1,6 +1,7 @@
-// 1699 Á¦°ö¼öÀÇ ÇÕ 
+// 1699 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 using namespace std;
 
 int n;

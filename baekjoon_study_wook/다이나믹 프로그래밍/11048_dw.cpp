@@ -1,6 +1,6 @@
-//11048 ÀÌµ¿ÇÏ±â 
+//11048 ï¿½Ìµï¿½ï¿½Ï±ï¿½ 
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
 
 int n,m;

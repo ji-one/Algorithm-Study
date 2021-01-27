@@ -1,16 +1,14 @@
-// 11052 Ä«µå ±¸¸ÅÇÏ±â 
+// 11052 Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ 
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
 
 int n;
-int p[1001];
 int dp[1001];
 int main(){
 	cin >> n;
 	for(int i=1; i<=n; i++){
-		cin >> p[i];
-		dp[i] = p[i];
+		cin >> dp[i];
 	}
 	for(int i=1; i<=n; i++){
 		for(int j=1; j<=i; j++){

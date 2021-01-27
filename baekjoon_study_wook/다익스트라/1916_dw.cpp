@@ -9,7 +9,10 @@ int n,m;
 vector<pair<int, int>> v[1001];
 int dist[1001];
 
+
 void dijkstra(int start){
+    priority_queue<pair<int,int>> pq;
+    
     priority_queue<pair<int,int>> pq;
     pq.push({0,start});
     dist[start] = 0;
