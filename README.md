@@ -4,7 +4,6 @@
 - IDE : `VSCode`
 - Language : `C++`
 
----
 ## Study Rule
 - 수, 토 Code Review
 - 풀(푼) 문제, 알고리즘 `notion`에 정리 (![PS](https://www.notion.so/610c83ca387f493a8e95b899be0f3a17?v=55bec5a857564512844b22dd2e119095), ![알고리즘 정리](https://www.notion.so/a45aa058ccbd4aedbc0f7c48a37aac3b))
