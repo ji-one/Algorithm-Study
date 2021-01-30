@@ -5,6 +5,9 @@
 
 ---
 
+https://www.notion.so/610c83ca387f493a8e95b899be0f3a17?v=55bec5a857564512844b22dd2e119095
+https://www.notion.so/a45aa058ccbd4aedbc0f7c48a37aac3b
+
 ### Contributors
 | [ji-one](https://github.com/ji-one)     | [Dongwook9696](https://github.com/Dongwook9696) |
 | ----------------------------------------------- | ----------------------------------------- |
