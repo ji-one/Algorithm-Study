@@ -22,12 +22,11 @@ int bfs(int x, int y){
     visit[x][y] = 1;    
     queue<pair<int,int>> q;
     q.push({x,y});
-    int c = 1;  // 이동할 수 있는 최소거리
+    int c = 1000;  // 이동할 수 있는 최소거리
     a=n;        // 최소거리 x 좌표
     b=n;        // 최소거리 y 좌표
 
     bool flag = false;  // 이동할 수 있는지 확인
-    c=1000;
     while(!q.empty()){
         int cx = q.front().first;
         int cy = q.front().second;
@@ -79,7 +78,7 @@ int main(){
         // 이동거리 초기화
         memset(visit,0,sizeof(visit));
 
-        // 물고기가 없다면 종료
+        // 먹을 수 있는 물고기가 없다면 종료
         bool exit =true;
         for(int i=0; i<n; i++){
             for(int j=0; j<n; j++){
