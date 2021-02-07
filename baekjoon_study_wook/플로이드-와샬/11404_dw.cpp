@@ -5,13 +5,12 @@ using namespace std;
 
 int n,m;
 int map[101][101];
-int INF = 1000001;;
+int INF = 10000001;
 
 void floyd(){
     for(int k=1; k<=n; k++){
        for(int i=1; i<=n; i++){
            for(int j=1; j<=n; j++){
-               if(i == j) continue;
                if(map[i][j] > map[i][k] + map[k][j]){
                    
                    map[i][j] = map[i][k] + map[k][j];
