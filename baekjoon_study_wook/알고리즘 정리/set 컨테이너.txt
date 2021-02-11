@@ -1,0 +1,16 @@
+set 컨테이너 사용법
+
+- 노드 기반 컨테이너, 균형 이진트리로 구현됨
+- Key라 불리는 원소들의 집합
+- key 값은 중복 X, 중복을 허용하려면 multiset
+- 자동으로 오름차순으로 정렬, 정렬하지 않으려면 ordered_set
+
+- 기본 선언 : set<int> s;
+
+- set<int>::iterator it,start, end
+
+- s.insert(k) 삽입
+- s.erase(iter) iter 가리키는 원소 제거
+- s.erase(start, end) [start,end) 범위 제거
+- s.find(k) 원소 k를 가리키는 반복자 반환
+            k가 없다면 s.end() 반복자 반환
