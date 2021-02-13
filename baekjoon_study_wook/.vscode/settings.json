@@ -9,6 +9,9 @@
         "deque": "cpp",
         "list": "cpp",
         "stack": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "xiosbase": "cpp",
+        "string": "cpp",
+        "xutility": "cpp"
     }
 }
