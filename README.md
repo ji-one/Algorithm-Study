@@ -1,6 +1,6 @@
 # algorithm-study
 - 알고리즘 문제 코드 기록
-- 알고리즘 사이트 (![Baekjoon Online Judge](www.acmicpc.net), ![Programmers](programmers.co.kr/learn/challenges?tab=all_challenges))
+- 알고리즘 사이트 (![Baekjoon Online Judge](acmicpc.net), ![Programmers](programmers.co.kr/learn/challenges?tab=all_challenges))
 - IDE : `VSCode`
 - Language : `C++`
 <br></br>
