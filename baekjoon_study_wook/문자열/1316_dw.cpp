@@ -1,6 +1,6 @@
-// �׷� �ܾ� üĿ1316 
+// �׷� �ܾ� üĿ1316 
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 int n, cnt;

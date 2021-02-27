@@ -1,12 +1,14 @@
-//1120 ¹®ÀÚ¿­
+//1120 ï¿½ï¿½ï¿½Ú¿ï¿½
 #include <iostream>
+#include <string>
+#include <algorithm>
 #include <vector>
 using namespace std;
 
 string a,b;
 int main(){
 	cin >> a >> b;
-	int n = b.size() - a.size(); // µÎ ¹®ÀÚ¿­ ±æÀÌ Â÷ÀÌ 
+	int n = b.size() - a.size(); // ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	int rst = 51;
 	for(int i=0; i<=n; i++){
 		int cnt = 0;

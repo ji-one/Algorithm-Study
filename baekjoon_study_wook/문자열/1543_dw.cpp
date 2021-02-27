@@ -1,6 +1,6 @@
-// 1543 ¹®¼­°Ë»ö
+// 1543 ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 string str, s;
