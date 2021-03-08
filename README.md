@@ -12,9 +12,8 @@
 ## Contributors
 | [ji-one](https://github.com/ji-one)     | [Dongwook9696](https://github.com/Dongwook9696) |
 | ----------------------------------------------- | ----------------------------------------- |
-## 🏅 제목 뭐하지
-- 2020-12-30 ~ 2021-02-28
-- 257 `AC`
+## 🏅 2020-12-30 ~ 2021-02-28
+- total: `257 AC`
 
 ![](https://user-images.githubusercontent.com/42952244/110327524-6e8d4d00-805d-11eb-8366-cefbf79a5795.png)
 ![](https://user-images.githubusercontent.com/42952244/110327698-a3999f80-805d-11eb-8127-39498e852360.png)
