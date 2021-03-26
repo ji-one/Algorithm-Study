@@ -13,6 +13,8 @@
         "xiosbase": "cpp",
         "string": "cpp",
         "xutility": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "set": "cpp",
+        "cmath": "cpp"
     }
 }
