@@ -1,40 +1,61 @@
-//9935 πÆ¿⁄ø≠ ∆¯πﬂ
+// 9935 Î¨∏ÏûêÏó¥ Ìè≠Î∞ú
 #include <iostream>
-#include <vector>
-using namespace std; 
+#include <stack>
+#include <string>
+#include <algorithm>
 
-string str, b;
-vector<char> st;
+using namespace std;
+
+string s;
+string b;
 int main(){
-	cin >> str >> b;
-	int n = b.size();
-	
-	for(int i=0; i<str.size(); i++){
-		st.push_back(str[i]);
-		if(b[n-1] == str[i]){
-			int k = st.size()-1;
-			bool check=true;
-			for(int j=n-1; j>=0; j--){
-				if(b[j] != st[k--]){
-					check = false;
-					break;
-				}
-			}
-			if(check){
-				for(int j=0; j<n; j++){
-					st.pop_back();
-				}
-			}
-		}
-	}
-	
-	string ans="";
+    stack<char> st;
+    stack<char> tmp;
+    cin >> s >> b;
+    for(int i=0; i<s.size(); i++){
+        st.push(s[i]);
+
+        if(!st.empty() && b.back() == st.top()){
+            bool bomb = true;
+            int cnt = 0;
+            for(int j=b.size()-1; j>=0; j--){
+                if(st.empty()){
+                    bomb = false;
+                    break;
+                }
+                if(b[j] != st.top()){
+                    bomb = false;
+                    break;
+                }
+                tmp.push(st.top());
+                st.pop();
+                cnt++;
+            }
+            if(bomb){
+                // while(!tmp.empty()){
+                //     tmp.pop();
+                // }
+            }
+            else{   // Î≥µÍµ¨
+                while(cnt--){
+                    st.push(tmp.top());
+                    tmp.pop();
+                }
+            }
+        }
+    }
+
+    string ans="";
 	if(st.size() == 0) ans = "FRULA";
 	else{
-		for(int i=0; i<st.size(); i++){
-			ans += st[i];
+		while(!st.empty()){
+			ans += st.top();
+			st.pop();
 		}
+		reverse(ans.begin(), ans.end());
 	}
 	cout << ans;
-	return 0;	
+
+    
+    return 0;
 }
