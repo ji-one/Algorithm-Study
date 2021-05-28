@@ -1,44 +1,43 @@
-//1967 Æ®¸®ÀÇ Áö¸§     ¼Ö·ç¼Ç - º½ 
+// 1967 íŠ¸ë¦¬ì˜ ì§€ë¦„
 #include <iostream>
 #include <vector>
-#include <cstring>
+
 using namespace std;
 
 int n;
-vector<pair<int, int>> tree[10001];
-vector<pair<int,int>> r;
+vector<pair<int, int> > tree[10001];
 int visit[10001];
-int rst;
-int endpoint;
-void dfs(int root,int len){
-	if(visit[root]){
-		return;
-	}
-	
-	visit[root]=1;
-	
-	if(rst<len){
-		rst = len;
-		endpoint = root;
-	}
-	
-	for(int i=0; i<tree[root].size(); i++){
-		dfs(tree[root][i].first, len+tree[root][i].second);	
-	}
-	return ;
+
+int endPoint = 0;
+int maxLen = 0;
+
+void dfs(int node, int len) {
+    
+    visit[node] =1;
+    for(int i=0; i<tree[node].size(); i++) {
+        int nextNode = tree[node][i].first;
+        int nextLen = tree[node][i].second + len;
+        if(!visit[nextNode]) {
+            if(maxLen < nextLen) {
+                maxLen = nextLen;
+                endPoint = nextNode;
+            }
+            dfs(nextNode, nextLen);
+        }
+    }
 }
-int main(){
-	cin >> n;
-	for(int i=0; i<n-1; i++){
-		int parent, child, edge;
-		cin >> parent >> child >> edge;
-		tree[parent].push_back({child, edge});
-		tree[child].push_back({parent,edge}); // ³¡ÁöÁ¡¿¡¼­ ±æÀÌ ¾Ë±â À§ÇØ ÇÊ¿ä  
-	}
-	
-	dfs(1,0);
-	memset(visit, 0, sizeof(visit));
-	dfs(endpoint,0); // ´Ù½Ã °¡Àå ¸Õ ÁöÁ¡ Ã£±â
-	cout << rst; 
-	return 0;
-} 
+int main() {
+    cin >> n;
+    for(int i=0; i<n-1; i++) {
+        int parent, child, edge;
+        cin >> parent >> child >> edge;
+        tree[parent].push_back({child, edge});
+        tree[child].push_back({parent, edge});
+    }
+
+    dfs(1, 0);
+    fill(visit, visit+n+1, 0);
+    dfs(endPoint, 0);
+    cout << maxLen;
+    return 0;
+}
