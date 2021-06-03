@@ -1,57 +1,61 @@
-// 1991 Æ®¸® ¼øÈ¸  
+// 1991 íŠ¸ë¦¬ ìˆœíšŒ
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-int n;
-char tree[27][2];  // ºÎ¸ð ¿ÞÀÚ½Ä ¿À¸¥ÀÚ½Ä
+vector<int> tree[30];
 
-void preorder(int n){
-	char node = n +'A';
-	cout << node;
-	
-	for(int i=0; i<2;i++){
-		if(tree[n][i]!= '.')
-			preorder(tree[n][i] - 'A');
-	}
+void preOrder(int parent) {
+    char node = parent + 'A';
+    cout << node;
+
+    for(int i=0; i<tree[parent].size(); i++) {
+        if(tree[parent][i] != '.') {
+            preOrder(tree[parent][i] - 'A');
+        }
+    }
 }
 
-void inorder(int n){
-	
-	if(tree[n][0]!= '.')
-		inorder(tree[n][0] - 'A');
-		
-	char node = n +'A';
-	cout << node;
-	
-	if(tree[n][1]!= '.')
-		inorder(tree[n][1] - 'A');
-	
-	return ;
+void inOrder(int parent) {
+    char node = parent + 'A';
+    
+    if(tree[parent][0] != '.') {
+        inOrder(tree[parent][0] - 'A');
+    }
+
+    cout << node;
+
+    if(tree[parent][1] != '.') {
+        inOrder(tree[parent][1] - 'A');
+    }
 }
 
-void postorder(int n){
-	
-	for(int i=0; i<2;i++){
-		if(tree[n][i]!= '.')
-			postorder(tree[n][i] - 'A');
-	}
-	char node = n +'A';
-	cout << node;
+void postOrder(int parent) {
+    char node = parent + 'A';
+
+    for(int i=0; i<tree[parent].size(); i++) {
+        if(tree[parent][i] != '.') {
+            postOrder(tree[parent][i] - 'A');
+        }
+    }
+    cout << node;
+
 }
-int main(){
-	cin >> n;
-	for(int i=0; i<n; i++){
-		char al;
-		cin >> al;
-		for(int j=0; j<2; j++){
-			cin >> tree[al - 'A'][j];
-		}
-	}
-	preorder(0);
-	cout << '\n';
-	inorder(0);
-	cout << '\n';
-	postorder(0);
-	return 0;
-} 
+
+int main() {
+    int n;
+    cin >> n;
+    for(int i=0; i<n; i++) {
+        char node, left, right;
+        cin >> node >> left >> right;
+        tree[node - 'A'].push_back(left);
+        tree[node - 'A'].push_back(right);
+    }
+    preOrder(0);
+    cout << '\n';
+    inOrder(0);
+    cout << '\n';
+    postOrder(0);
+    
+}

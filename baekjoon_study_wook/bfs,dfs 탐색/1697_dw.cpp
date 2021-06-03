@@ -1,5 +1,5 @@
-//1697 ¼û¹Ù²ÀÁú
- 
+// 1697 ìˆ¨ë°”ê¼­ì§ˆ
+
 #include <iostream>
 #include <queue>
 
@@ -7,44 +7,44 @@ using namespace std;
 
 int n,k;
 int visit[100001];
-int dx[2] = {-1,1};
+int pos[100001];
 
-bool isInside(int x){
-	return (x>=0 && x<=100000);
+bool isInside(int x) {
+    return x>=0 && x<=100000;
 }
 
-void bfs(){
+int bfs() {
+    queue<int> q;
+    q.push(n);
+    visit[n] = 1;
 
-	queue<int> q;
-	q.push(n);
-	while(!q.empty()){
-		int x = q.front();
-		q.pop();
-		for(int i=0; i<3; i++){
-			int nx;
-			if(i==2){
-				nx = x * 2;
-			}
-			else{
-				nx = x + dx[i];
-			}
-			if(isInside(nx) && visit[nx] == 0){
-				visit[nx] = visit[x] + 1;
-				q.push(nx);
-			}
-		}
-	}
-	
-	return ;
+    while(!q.empty()) {
+        int cx = q.front();
+        q.pop();
+        
+        if(cx == k) {
+            return visit[cx] - 1;
+        }
+        if(isInside(cx-1) && visit[cx-1] == 0) {
+            q.push(cx-1);
+            visit[cx-1] = visit[cx] + 1;
+        }
+
+        if(isInside(cx+1) && visit[cx+1] == 0) {
+            q.push(cx+1);
+            visit[cx+1] = visit[cx] + 1;
+        }
+
+        if(isInside(cx*2) && visit[cx*2] == 0) {
+            q.push(cx*2);
+            visit[cx*2] = visit[cx] + 1;
+        }
+    }
 }
 int main(){
-	cin >>n >>k;
-	bfs();
-	if(n == k){
-		cout << 0;
-	}
-	else{
-		cout << visit[k] ;
-	}
-	return 0;
+    cin >> n >> k;
+    
+    cout << bfs();
+
+    return 0;
 }

@@ -1,56 +1,39 @@
-// 11725 ∆Æ∏Æ¿« ∫Œ∏ √£±‚
+// 11725 Ìä∏Î¶¨Ïùò Î∂ÄÎ™® Ï∞æÍ∏∞
+
 #include <iostream>
 #include <vector>
-#include <queue>
 using namespace std;
 
-int n;
-vector<int> v[100001];
-int visit[100001];
+vector<int> tree[100001];
 int parent[100001];
+int visit[100001];
 
-void dfs(int node){
-	visit[node] = 1;
-	
-	for(int i=0; i<v[node].size(); i++){
-		if(!visit[v[node][i]]){
-			parent[v[node][i]] = node;
-			dfs(v[node][i]);
-		}
-	}
+void dfs(int node) {
+    for(int i=0; i<tree[node].size(); i++) {
+        int nextNode = tree[node][i];
+        if(!visit[nextNode]) {
+            visit[nextNode] = 1;
+            parent[nextNode] = node;
+            dfs(nextNode);
+        }
+    }
 }
 
-void bfs(int node){
-	visit[node] = 1;
-	queue<int> q;
-	q.push(node);
-	
-	while(!q.empty()){
-		int tmp = q.front();
-		q.pop();
-		for(int i=0; i<v[tmp].size(); i++){
-			int nv = v[tmp][i];
-			if(!visit[nv]){
-				visit[nv] = 1;
-				parent[nv] = tmp;
-				q.push(nv);
-			}
-		}
-	}
-}
-int main(){
-	cin >> n;
-	for(int i=1; i<n; i++){
-		int v1, v2;
-		cin >> v1 >> v2;
-		v[v1].push_back(v2);
-		v[v2].push_back(v1);
-	}
-	
-//	dfs(1);
-	bfs(1);
-	for(int i=2; i<=n; i++){
-		cout << parent[i] <<'\n';
-	}
-	return 0;
+int main() {
+    int n;
+    cin >> n;
+    for(int i=0; i<n-1; i++) {
+        int from, to;
+        cin >> from >> to;
+        tree[from].push_back(to);
+        tree[to].push_back(from);
+
+    }
+
+    dfs(1);
+
+    for(int i=2; i<=n; i++) {
+        cout << parent[i] << '\n';
+    }
+    return 0;
 }
