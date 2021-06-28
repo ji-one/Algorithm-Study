@@ -15,6 +15,7 @@
         "xutility": "cpp",
         "cstring": "cpp",
         "set": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "map": "cpp"
     }
 }
