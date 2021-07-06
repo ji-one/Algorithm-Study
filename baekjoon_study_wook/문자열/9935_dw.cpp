@@ -12,6 +12,8 @@ int main(){
     stack<char> st;
     stack<char> tmp;
     cin >> s >> b;
+
+    int asd = 0;
     for(int i=0; i<s.size(); i++){
         st.push(s[i]);
 
@@ -35,6 +37,7 @@ int main(){
                 // while(!tmp.empty()){
                 //     tmp.pop();
                 // }
+                asd++;
             }
             else{   // 복구
                 while(cnt--){
@@ -54,7 +57,7 @@ int main(){
 		}
 		reverse(ans.begin(), ans.end());
 	}
-	cout << ans;
+	cout << asd;
 
     
     return 0;
