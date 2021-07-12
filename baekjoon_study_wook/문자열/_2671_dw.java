@@ -1,4 +1,4 @@
-
+package 문자열;
 // 2671 잠수함식별
 
 import java.io.BufferedReader;

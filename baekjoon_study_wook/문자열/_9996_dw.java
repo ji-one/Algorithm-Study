@@ -1,3 +1,5 @@
+package 문자열;
+
 // 9996 한국이 그리울 땐 서버에 접속하지
 
 import java.io.BufferedReader;
