@@ -23,8 +23,6 @@ int bfs(int x) {
             return ct;
         }
 
-        
-
         if(cx%3 == 0 && !visit[cx/3]) {
             q.push({cx/3, ct+1});
             visit[cx/3] = cx;
