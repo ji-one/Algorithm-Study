@@ -3,7 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#define MAX 987654321
+#define MAX 2100000000
 
 using namespace std;
 
@@ -28,8 +28,10 @@ int main() {
                 ans = min(ans, abs(diff));
                 if(diff > 0) {
                     left++;
-                } else {
+                } else if(diff < 0){
                     right--;
+                } else {
+                    break;
                 }
             }
         }
